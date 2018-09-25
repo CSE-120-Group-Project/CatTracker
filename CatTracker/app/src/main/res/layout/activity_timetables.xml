@@ -25,7 +25,7 @@
     </ScrollView>
 
     <TextView
-        android:id="@+id/Favorite stop 2"
+        android:id="@+id/tv_favorite_stop_2"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:text="Favorite stop 2"
@@ -33,7 +33,7 @@
         tools:layout_editor_absoluteY="97dp" />
 
     <TextView
-        android:id="@+id/Favorite stop 1"
+        android:id="@+id/tv_favorite_stop_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Favorite stop 1"
@@ -41,7 +41,7 @@
         tools:layout_editor_absoluteY="68dp" />
 
     <Button
-        android:id="@+id/Sort by Lines"
+        android:id="@+id/btn_sort_by_lines"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sort by Lines"

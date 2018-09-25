@@ -7,7 +7,7 @@
     tools:context=".Home">
 
     <Button
-        android:id="@+id/Closest Stop"
+        android:id="@+id/btn_closest_stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Closest Stop"
@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="231dp" />
 
     <Button
-        android:id="@+id/Timetables"
+        android:id="@+id/btn_timetables"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Timetables"
@@ -23,7 +23,7 @@
         tools:layout_editor_absoluteY="231dp" />
 
     <Button
-        android:id="@+id/Itinerary Search"
+        android:id="@+id/btn_itinerary_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Itinerary Search"
@@ -31,7 +31,7 @@
         tools:layout_editor_absoluteY="148dp" />
 
     <Button
-        android:id="@+id/Favorites"
+        android:id="@+id/btn_favorites"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Favorites"
@@ -39,7 +39,7 @@
         tools:layout_editor_absoluteY="148dp" />
 
     <Button
-        android:id="@+id/Get me to Campus"
+        android:id="@+id/btn_get_me_to_campus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Get me to Campus"

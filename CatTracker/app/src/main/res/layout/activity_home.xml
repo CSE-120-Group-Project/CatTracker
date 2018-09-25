@@ -6,13 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".Home">
 
-    <TextView
+    <Button
+        android:id="@+id/Closest Stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Closest Stop"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="231dp" />
 
+    <Button
+        android:id="@+id/Timetables"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timetables"
+        tools:layout_editor_absoluteX="207dp"
+        tools:layout_editor_absoluteY="231dp" />
+
+    <Button
+        android:id="@+id/Itinerary Search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Itinerary Search"
+        tools:layout_editor_absoluteX="37dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <Button
+        android:id="@+id/Favorites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Favorites"
+        tools:layout_editor_absoluteX="217dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <Button
+        android:id="@+id/Get me to Campus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get me to Campus"
+        tools:layout_editor_absoluteX="127dp"
+        tools:layout_editor_absoluteY="314dp" />
 </android.support.constraint.ConstraintLayout>

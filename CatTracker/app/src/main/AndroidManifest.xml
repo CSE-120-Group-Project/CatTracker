@@ -28,7 +28,8 @@
             android:label="@string/title_activity_favorites" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
+            android:label="@string/title_activity_login" />
+        <activity android:name=".ClosestStop" />
     </application>
 
 </manifest>

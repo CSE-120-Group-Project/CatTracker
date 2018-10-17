@@ -49,6 +49,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         })
 
         email_sign_in_button.setOnClickListener { attemptLogin() }
+        bottomNavigationView.menu.getItem(0).setCheckable(false)
     }
 
     private fun populateAutoComplete() {

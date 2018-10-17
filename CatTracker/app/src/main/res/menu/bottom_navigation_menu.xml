@@ -2,14 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_itinerary_search"
-        android:icon="@android:drawable/ic_dialog_map"/>
+        android:icon="@android:drawable/ic_dialog_map"
+        android:title="@string/navbar_itinerary"/>
     <item
         android:id="@+id/action_favorites"
-        android:icon="@android:drawable/btn_star"/>
+        android:icon="@android:drawable/btn_star"
+        android:title="@string/navbar_favorites"/>
     <item
         android:id="@+id/action_closest_stop"
-        android:icon="@android:drawable/ic_menu_mylocation"/>
+        android:icon="@android:drawable/ic_menu_mylocation"
+        android:title="@string/navbar_stop"/>
     <item
         android:id="@+id/action_timetables"
-        android:icon="@android:drawable/ic_lock_idle_alarm"/>
+        android:icon="@android:drawable/ic_lock_idle_alarm"
+        android:title="@string/navbar_timetables"/>
 </menu>

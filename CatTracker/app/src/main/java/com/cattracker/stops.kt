@@ -8,8 +8,12 @@ import android.arch.persistence.room.ColumnInfo
 @Entity(tableName = "stops")
 data class Stops(
                 @ColumnInfo(name = "stop") var stop: String,
+                @ColumnInfo(name = "stationID") var stationID: Int,
+                @ColumnInfo(name = "time") var time: String,
                 @ColumnInfo(name = "route") var route: String,
-                @ColumnInfo(name = "time") var time: String
+                @ColumnInfo(name = "orderID") var orderID: Int
+
+
 ){
-    constructor():this("", "", "")
+    constructor():this("", 0,"","",0)
 }

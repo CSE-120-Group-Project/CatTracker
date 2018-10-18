@@ -1,6 +1,6 @@
 package com.cattracker
-
 import android.app.Application
+import com.huma.room_for_asset.RoomAsset
 import android.arch.persistence.room.Room
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
@@ -12,7 +12,8 @@ class AppCatTracker: Application(){
     }
     override fun onCreate() {
         super.onCreate()
-        db = Room.databaseBuilder(this, AppDatabase::class.java, "app_db").allowMainThreadQueries().build()
+        db = RoomAsset.databaseBuilder(this, AppDatabase::class.java, "cat.db").allowMainThreadQueries().build()
+
     }
 
 

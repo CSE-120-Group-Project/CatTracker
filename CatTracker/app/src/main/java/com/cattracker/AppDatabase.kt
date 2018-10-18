@@ -8,7 +8,7 @@ import com.cattracker.userDao
 import com.cattracker.Stops
 import com.cattracker.User
 abstract class AppDatabase: RoomDatabase()  {
-    @Database(entities = arrayOf(Stops::class, User::class), version = 1)
+    @Database(entities = arrayOf(Stops::class, User::class), version = 2)
     //@TypeConverters(Converters::class)
     abstract class AppDatabse : RoomDatabase() {
 

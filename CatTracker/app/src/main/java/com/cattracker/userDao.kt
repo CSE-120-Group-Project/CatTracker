@@ -10,7 +10,7 @@ interface userDao {
     @Query("SELECT * FROM User")
     fun getAllUser(): List<User>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.ROLLBACK)
     fun insertUser(user: User): Long?
 
     @Query("SELECT userName FROM user WHERE userName = :username LIMIT 1")

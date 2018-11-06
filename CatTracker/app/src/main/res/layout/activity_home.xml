@@ -12,10 +12,10 @@
         android:layout_height="75dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
+        android:drawableEnd="@android:drawable/ic_menu_mylocation"
         android:text="Closest Stop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_itinerary_search"
-        tools:drawableEnd="@android:drawable/ic_menu_mylocation" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_itinerary_search" />
 
     <Button
         android:id="@+id/btn_timetables"
@@ -45,10 +45,10 @@
         android:layout_height="75dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="32dp"
+        android:drawableEnd="@android:drawable/btn_star_big_off"
         android:text="Favorites"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:drawableEnd="@android:drawable/btn_star_big_off" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_get_me_to_campus"

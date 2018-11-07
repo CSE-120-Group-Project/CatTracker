@@ -21,14 +21,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Timetables" />
+        <activity
+            android:name=".Timetables"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".Itinerary" />
         <activity
             android:name=".Favorites"
             android:label="@string/title_activity_favorites" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".ClosestStop" />
     </application>
 

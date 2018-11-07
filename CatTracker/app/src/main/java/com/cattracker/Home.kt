@@ -20,11 +20,11 @@ class Home : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //Switch to favorites page
+        //Switch to log in page
         val btnFavorites = findViewById<Button>(R.id.btn_favorites);
         btnFavorites.setOnClickListener()
         {
-            val intent = Intent(this, Favorites::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 

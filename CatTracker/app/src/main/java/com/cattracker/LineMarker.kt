@@ -115,9 +115,9 @@ class LineMarker {
         val placeDetailsMap = mutableMapOf(
                 for (key in activeLine) {
 
-                    $key to PlaceDetails (
+                    key to PlaceDetails (
                             position = activeLine.getValue($key),
-                    title = $key,
+                    title = key,
                     draggable = false
                     )
                 }

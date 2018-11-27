@@ -1,6 +1,7 @@
 package com.cattracker
 
 
+import android.util.Log
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 
@@ -8,8 +9,6 @@ class LineMarker {
 
 
     private lateinit var map: GoogleMap
-
-    //private var activeLine = Fastcat
 
     private var Heritage = mapOf(
             "Mammoth Lakes Rd." to LatLng(37.363256, -120.429404),
@@ -30,7 +29,6 @@ class LineMarker {
             "Granville Apartments" to LatLng(37.315222, -120.502972),
             "Walmart on Loughborough Dr.(Pullout past Mistwood Dr.)" to LatLng(37.316995, -120.499007),
             "Meadows Ave. & Olivewood Dr.(Food Maxx)" to LatLng(37.318107, -120.490619),
-            //"Swiss Colony Apts." to LatLng(),
             "G St. & W. Alexander Ave.(Bus Stop on G by Gas Station)" to LatLng(37.315778, -120.469213),
             "Rite Aid/Walgreens" to LatLng(37.319633, -120.469128),
             "El Portal & G Street(Bus Stop on G)" to LatLng(37.327045, -120.469015),
@@ -42,9 +40,7 @@ class LineMarker {
             "Mercy Hospital/Tri-College" to LatLng(37.339455, -120.468750),
             "El Portal & G Street(Bus Stop on G)" to LatLng(37.327045, -120.469015),
             "G St. & W. Alexander Ave.(Bus Stop on G by Gas Station)" to LatLng(37.315778, -120.469213),
-            //"Swiss Colony"
             "Meadows Ave. & Olivewood Dr.(Food Maxx)" to LatLng(37.318107, -120.490619)
-            //"Walmart"
     )
 
     private var C2 = mapOf(
@@ -105,22 +101,55 @@ class LineMarker {
             "K St. Between 18th St. & 19th St." to LatLng(37.302271, -120.481111)
     )
 
+    private var activeLine = listOf(Heritage, CampusTrax, C1, C2, E1, E2, Fastcat, G)
+
     fun onMapReady(googleMap: GoogleMap?) {
         map = googleMap ?: return
 
         addMarkers()
     }
 
-    private fun addMarkers() {
-        val placeDetailsMap = mutableMapOf(
+    class PlaceDetails(
+            val position: LatLng?,
+            val title: String = "Marker",
+            val draggable: Boolean = false
+    )
+
+    fun addMarkers() {
+        //var activeLine: MutableList<Map<String, LatLng>> = mutableListOf(Heritage, CampusTrax, C1, C2, E1, E2, Fastcat, G)
+        //var test: String = activeLine[0].get("Mammoth Lakes Rd.").toString()
+        //System.out.println("Testing: $test")
+        //Log.i("addMarkers(): ", "Testing: $test")
+
+        for (s in activeLine)
+        {
+            var y: Int = 1
+            for (t in s.keys)
+            {
+                Log.i(" " + ": " + y.toString() + ". PLACE: ", t)
+                y += 1
+                val placeDetailsMap = mutableMapOf(
+                        t to PlaceDetails(
+                                position = s[t],
+                                title = "Marker",
+                                draggable = false
+                        )
+                )
+            }
+        }
+
+
+
+
+        /*val placeDetailsMap = mutableMapOf(
                 for (key in activeLine) {
 
-                    key to PlaceDetails (
+                    $key to PlaceDetails (
                             position = activeLine.getValue($key),
-                    title = key,
+                    title = $key,
                     draggable = false
                     )
                 }
-        )
+        )*/
     }
 }

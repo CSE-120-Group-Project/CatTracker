@@ -3,17 +3,15 @@ package com.cattracker
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_closest_stop.*
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.cattracker.LineMarker
+import com.google.android.gms.maps.*
 
-class ClosestStop : AppCompatActivity(), OnMapReadyCallback {
+class ClosestStop : FragmentActivity(), OnMapReadyCallback{
 
     private lateinit var map: GoogleMap
 
@@ -21,8 +19,8 @@ class ClosestStop : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_closest_stop)
-        val mapFragment : MapFragment? =
-                supportFragmentManager.findFragmentById(R.id.map) as? MapFragment
+        val mapFragment : SupportMapFragment? =
+                supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
         mapFragment?.getMapAsync(this)
         this.bottomNavigationView.menu.getItem(2).setChecked(true)
 

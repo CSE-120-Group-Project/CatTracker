@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.activity_closest_stop.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.MapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.cattracker.LineMarker
@@ -21,8 +21,8 @@ class ClosestStop : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_closest_stop)
-        val mapFragment : SupportMapFragment? =
-                supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
+        val mapFragment : MapFragment? =
+                supportFragmentManager.findFragmentById(R.id.map) as? MapFragment
         mapFragment?.getMapAsync(this)
         this.bottomNavigationView.menu.getItem(2).setChecked(true)
 

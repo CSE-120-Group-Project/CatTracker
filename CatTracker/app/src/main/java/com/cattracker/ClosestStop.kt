@@ -151,7 +151,7 @@ class ClosestStop : AppCompatActivity(), OnMapReadyCallback {
             "K St. Between 18th St. & 19th St." to LatLng(37.302271, -120.481111)
     )
 
-    private var activeLine = Fastcat
+    private var activeLine = listOf(Heritage, CampusTrax, C1, C2, E1, E2, Fastcat, G)
 
     private fun addMarkers() {
         for (s in activeLine)

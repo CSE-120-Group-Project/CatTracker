@@ -21,24 +21,8 @@ class ClosestStop : FragmentActivity(), OnMapReadyCallback{
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_closest_stop)
-        val base = "https://www.google.com/maps/dir/?api=1&destination="
-        val stringList = StringBuilder()
-        stringList.append(base)
-        val it = activeLine[activeLine.indexOf(Heritage)].entries
-        for(coords in it){
-            stringList.append(coords.value.latitude)
-            stringList.append(",")
-            stringList.append(coords.value.longitude)
-            it.minus(coords)
-            if(coords.key == "Student Activities & Athletics Center"){
-                stringList.append("&waypoints=")
-            }
-            else if(it.isNotEmpty()){
-                stringList.append("|")
-            }
-        }
-        stringList.append("&travelmode=walking")
-        val uriString = stringList.toString()
+
+        val uriString = mapSetup("Heritage")
         val mapUri = Uri.parse(uriString)
         val mapIntent = Intent(Intent.ACTION_VIEW, mapUri)
         mapIntent.setPackage("com.google.android.apps.maps")
@@ -88,6 +72,28 @@ class ClosestStop : FragmentActivity(), OnMapReadyCallback{
         }
 
 
+    }
+
+    fun mapSetup(line: String): String{
+        val base = "https://www.google.com/maps/dir/?api=1&destination="
+        val stringList = StringBuilder()
+        stringList.append(base)
+        val it = activeLine.getValue(line)
+        for(coords in it){
+            stringList.append(coords.value.latitude)
+            stringList.append(",")
+            stringList.append(coords.value.longitude)
+            it.minus(coords)
+            if(coords.key == "Student Activities & Athletics Center"){
+                stringList.append("&waypoints=")
+            }
+            else if(it.isNotEmpty()){
+                stringList.append("|")
+            }
+        }
+        stringList.append("&travelmode=walking")
+        val res = stringList.toString()
+        return res
     }
     private var Heritage = mapOf(
             "Student Activities & Athletics Center" to LatLng(37.3654274, -120.4262007),
@@ -184,7 +190,7 @@ class ClosestStop : FragmentActivity(), OnMapReadyCallback{
             "Mammoth Lakes Rd." to LatLng(37.363256, -120.429404)
     )
 
-    private var activeLine = listOf(Heritage, CampusTrax, C1, C2, E1, E2, Fastcat, G)
+    private var activeLine = mapOf("Heritage" to Heritage, "CampusTrax" to CampusTrax, "C1" to C1, "C2" to C2, "E1" to E1, "E2" to E2, "Fastcat" to Fastcat, "G" to G)
 
 //    private fun addMarkers() {
 //        for (s in activeLine)

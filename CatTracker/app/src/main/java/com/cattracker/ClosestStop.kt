@@ -21,14 +21,14 @@ class ClosestStop : FragmentActivity(), OnMapReadyCallback{
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_closest_stop)
-        val uriString = "https://www.google.com/maps/dir/?api=1&destination="
+        val uriString = "https://www.google.com/maps/dir/?api=1&origin=37.3637409,-120.4305694&destination="
         val it = activeLine[activeLine.indexOf(Heritage)].entries
         for(coords in it){
             uriString.plus(coords.value.latitude)
             uriString.plus(",")
             uriString.plus(coords.value.longitude)
             it.minus(coords)
-            if(coords.key.equals("Student Activities & Athletics Center")){
+            if(coords.key == "Student Activities & Athletics Center"){
                 uriString.plus("&waypoints=")
             }
             else if(it.isNotEmpty()){

@@ -179,22 +179,22 @@ class ClosestStop : FragmentActivity(), OnMapReadyCallback{
 
     private var activeLine = listOf(Heritage, CampusTrax, C1, C2, E1, E2, Fastcat, G)
 
-    private fun addMarkers() {
-        for (s in activeLine)
-        {
-            var y: Int = 1
-            for (t in s.keys)
-            {
-                Log.i(" " + ": " + y.toString() + ". PLACE: ", t)
-                y += 1
-                val placeDetailsMap = mutableMapOf(
-                        t to LineMarker.PlaceDetails(
-                                position = s[t],
-                                title = "Marker",
-                                draggable = false
-                        )
-                )
-            }
-        }
-    }
+//    private fun addMarkers() {
+//        for (s in activeLine)
+//        {
+//            var y: Int = 1
+//            for (t in s.keys)
+//            {
+//                Log.i(" " + ": " + y.toString() + ". PLACE: ", t)
+//                y += 1
+//                val placeDetailsMap = mutableMapOf(
+//                        t to LineMarker.PlaceDetails(
+//                                position = s[t],
+//                                title = "Marker",
+//                                draggable = false
+//                        )
+//                )
+//            }
+//        }
+//    }
 }

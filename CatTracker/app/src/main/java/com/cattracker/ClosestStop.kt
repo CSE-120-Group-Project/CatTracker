@@ -24,9 +24,9 @@ class ClosestStop : FragmentActivity(), OnMapReadyCallback{
         val uriString = "https://www.google.com/maps/dir/?api=1&destination="
 
         for(coords in activeLine[activeLine.indexOf(Heritage)]){
-            uriString.plus(coords.value.latitude)
-            uriString.plus(",")
             uriString.plus(coords.value.longitude)
+            uriString.plus(",")
+            uriString.plus(coords.value.latitude)
             if(coords.key.equals("Student Activities & Athletics Center")){
                 uriString.plus("&waypoints=")
             }

@@ -1,7 +1,9 @@
 package com.cattracker
 import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Query
 
+@Dao
 interface stopsDao {
     @Query("SELECT * FROM stops")
     fun getAllStops(): Stops

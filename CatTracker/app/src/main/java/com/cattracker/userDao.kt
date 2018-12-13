@@ -2,6 +2,8 @@ package com.cattracker
 import android.arch.persistence.room.*
 
 import com.cattracker.User
+
+@Dao
 interface userDao {
     @Query("SELECT * FROM User")
     fun getAllUser(): List<User>
@@ -11,6 +13,9 @@ interface userDao {
 
     @Query("SELECT userName FROM user WHERE userName = :username LIMIT 1")
     fun findUserByUsername(username: String): List<UserNameVariable>
+
+    @Query("SELECT userName FROM user WHERE userName = :username AND password = :password LIMIT 1")
+    fun findUserCredentials(username: String, password: String): List<UserNameVariable>
 
     @Query("SELECT * FROM user WHERE id = :id LIMIT 1")
     fun findUserById(id: Long?): User

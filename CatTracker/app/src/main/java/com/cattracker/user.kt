@@ -9,8 +9,8 @@ import android.arch.persistence.room.ColumnInfo
 data class User(@PrimaryKey(autoGenerate = true) var id: Long, //Primarykey: String or Int?
                 @ColumnInfo(name = "userName") var userName: String,
                 @ColumnInfo(name = "password") var password: String,
-                @ColumnInfo(name = "stops") var stops: String,
-                @ColumnInfo(name = "route") var route: String
+                @ColumnInfo(name = "stops") var stops: String?,
+                @ColumnInfo(name = "route") var route: String?
 ){
     constructor():this( 0, "", "","", "")
 }

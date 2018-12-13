@@ -24,6 +24,8 @@ import android.widget.TextView
 import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
 import android.content.Intent
+import android.util.Log
+import android.widget.Toast
 
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -31,6 +33,12 @@ import kotlinx.android.synthetic.main.activity_login.*
  * A login screen that offers login via email/password.
  */
 class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
+
+    private var cDb: AppDataBase? = null
+    private var cDbWorkerThread: DbWorkerThread = DbWorkerThread("dbWorkerThread")
+
+    var userLoggedIn = false
+
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
@@ -39,6 +47,10 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        cDbWorkerThread.start()
+
+        cDb = AppDataBase.getInstance(this)
 
         this.bottomNavigationView.menu.getItem(1).setChecked(true)
         this.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
@@ -139,6 +151,12 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(passwordStr) && !isPasswordValid(passwordStr)) {
             password.error = getString(R.string.error_invalid_password)
+            focusView = password
+            cancel = true
+        }
+        else if (TextUtils.isEmpty(passwordStr))
+        {
+            password.error = getString(R.string.error_field_required)
             focusView = password
             cancel = true
         }
@@ -287,16 +305,79 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
                     ?: true
         }
 
+        fun checking(success: Boolean?, unique: Boolean)
+        {
+            if (success!! && unique) {
+                Log.i("HERE", "GOOD")
+                val user = User(0, mEmail, mPassword, null, null)
+                val insert = Runnable { cDb?.userDao()?.insertUser(user) }
+                cDbWorkerThread.postTask(insert)
+                userLoggedIn = true
+
+                val intent = Intent(this@LoginActivity, Home::class.java)
+                var extras = Bundle()
+                extras.putBoolean("LoggedIn", true)
+                extras.putString("UserName", mEmail)
+                intent.putExtras(extras)
+                startActivity(intent)
+                finish()
+            }
+            else
+            {
+                password.error = getString(R.string.error_incorrect_password)
+                password.requestFocus()
+            }
+        }
         override fun onPostExecute(success: Boolean?) {
             mAuthTask = null
             showProgress(false)
 
-            if (success!!) {
-                finish()
-            } else {
-                password.error = getString(R.string.error_incorrect_password)
-                password.requestFocus()
+            var unique = false
+
+            val check = Runnable { val all = cDb?.userDao()?.findUserByUsername(mEmail)
+                if (all?.size!! == 0)
+                {
+                    Log.i("UNIQUE1", unique.toString())
+                    unique = true
+                    Log.i("UNIQUE2", unique.toString())
+                }
+
+                if (unique == true) {
+                    checking(success, unique)
+                }
+                else if (!unique && success!!)
+                {
+                    val checkUser = Runnable { val user = cDb?.userDao()?.findUserCredentials(mEmail, mPassword)
+                        if (user?.size!! != 0)
+                        {
+                            val intent = Intent(this@LoginActivity, Home::class.java)
+                            var extras = Bundle()
+                            extras.putBoolean("LoggedIn", true)
+                            extras.putString("UserName", mEmail)
+                            intent.putExtras(extras)
+                            startActivity(intent)
+                            finish()
+                        }
+                        else
+                        {
+                            Toast.makeText(baseContext, "The email or password is incorrect", Toast.LENGTH_SHORT).show()
+                        }
+
+                    }
+                    cDbWorkerThread.postTask(checkUser)
+                }
+                else
+                {
+                    //email.error = "This email is already in use"
+                    //email.requestFocus()
+                    Toast.makeText(baseContext, "This email is already in use", Toast.LENGTH_SHORT).show()
+                }
             }
+            cDbWorkerThread.postTask(check)
+
+            Log.i("UNIQUE3", unique.toString())
+
+
         }
 
         override fun onCancelled() {
